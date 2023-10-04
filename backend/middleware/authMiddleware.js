@@ -5,10 +5,10 @@ const jwt = require("jsonwebtoken");
 const protect = asyncHandler(async (req, res, next) => {
   try {
     const token = req.cookies.token;
-    console.log("token 2", token);
+
     if (!token) {
       res.status(401);
-      throw new Error("Not authorized, no admin token");
+      throw new Error("Not authorized, please login as an admin");
     }
     // Verify token
     const verified = jwt.verify(token, process.env.JWT_SECRET);
@@ -31,9 +31,7 @@ const protect = asyncHandler(async (req, res, next) => {
     next();
   } catch (error) {
     res.status(401);
-    throw new Error(
-      "Not authorized, please login or register - an error from middleware"
-    );
+    throw new Error("Not authorized, please login or register as an admin");
   }
 });
 
