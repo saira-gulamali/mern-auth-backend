@@ -572,7 +572,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   // Hash token and save
   const hashedToken = hashToken(resetToken);
-  console.log("date now", Date.now());
+  // console.log("date now", Date.now());
   // console.log("hashedToken", hashedToken);
   await new Token({
     userId: user._id,
