@@ -483,7 +483,7 @@ const sendVerificationEmail = asyncHandler(async (req, res) => {
     userId: user._id,
     verificationToken: hashedToken,
     createdAt: Date.now(),
-    expiresAt: Date.now() + 60 * (60 * 1000), // 60 minutes
+    expiresAt: Date.now() + 120 * (60 * 1000), // 60 minutes
   }).save();
 
   // Construct verification url
