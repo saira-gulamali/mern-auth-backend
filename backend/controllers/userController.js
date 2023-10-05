@@ -129,7 +129,7 @@ const loginUser = asyncHandler(async (req, res) => {
       userId: user._id,
       loginToken: encryptedLoginCode,
       createdAt: Date.now(),
-      expiresAt: Date.now() + 60 * (60 * 1000),
+      expiresAt: Date.now() + 120 * (60 * 1000),
     }).save();
 
     res.status(400);
@@ -578,7 +578,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
     userId: user._id,
     resetToken: hashedToken,
     createdAt: Date.now(),
-    expiresAt: Date.now() + 60 * (60 * 1000), // 60 minutes
+    expiresAt: Date.now() + 120 * (60 * 1000), // 60 minutes
   }).save();
 
   // Construct forgot password url
